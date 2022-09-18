@@ -21,6 +21,7 @@ export const MutedLink = styled.a`
     color: rgba(200, 200, 200, 0.8);
     font-weight: 500;
     text-decoration: none;
+    opacity:1;
 `
 
 export const BoldLink = styled.a`
@@ -42,6 +43,7 @@ export const Input = styled.input`
 
     &::placeholder {
         color: rgba(200, 200, 200, 1);
+        opacity:1;
     }
 
     &:not(:last-of-type) {
