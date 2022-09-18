@@ -8,6 +8,8 @@ const homeRoute = require("./routes/homeRoute")
 const userRoute = require("./routes/userRoute")
 const postRoute = require("./routes/postRoute")
 const communitiesRoute = require("./routes/CommunitiesRoute")
+const hackathonRoute = require("./routes/hackathonRoute")
+var cors = require("cors")
 const { errorHandler } = require("./middlewares/errorHandler")
 
 app.use(express.json())
@@ -19,7 +21,7 @@ app.use(
         tempFileDir: "/tmp/",
     })
 )
-
+app.use(cors())
 app.use(morgan("tiny"))
 
 app.use("/", homeRoute)
@@ -29,6 +31,8 @@ app.use("/", userRoute)
 app.use("/", postRoute)
 
 app.use("/", communitiesRoute)
+
+app.use("/", hackathonRoute)
 
 app.use(errorHandler)
 

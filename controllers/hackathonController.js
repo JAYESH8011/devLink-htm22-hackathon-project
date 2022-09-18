@@ -73,5 +73,21 @@ exports.registerHackathon = bigPromise(async (req, res, next) => {
 exports.joinHackathon = bigPromise(async (req, res, next) => {
     const { joinedHacakthonId } = req.body
     const joinedHacakthon = await JoinedHackathon.findById(joinedHacakthonId)
-    if(joinedHacakthon.teamLeaderId === req._id)
+    if (joinedHacakthon.teamLeaderId === req._id)
+        return next(new CustomError("you are a team leader", 400))
+    if (joinedHacakthon.team.find(req._id))
+        return next(new CustomError("you have already registed", 400))
+    joinedHacakthon.team.push(req._id)
+    await joinedHacakthon.save()
+    res.status(200).json({
+        status: "ok",
+        message: "successfully registed",
+    })
+})
+exports.getallhackathon = bigPromise(async (req, res, next) => {
+    const allhackathon = await Hackathon.find()
+    res.status(200).json({
+        status: "ok",
+        allhackathon,
+    })
 })

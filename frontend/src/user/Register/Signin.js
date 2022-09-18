@@ -17,51 +17,51 @@ import { AccountContext } from "./AccountContext"
 
 const Signin = () => {
     const [values, setValues] = useState({
-        email: "",
-        password: "",
+        email: "one@one.com",
+        password: "123456",
         error: "",
         loading: false,
         didNavigate: false,
     })
 
     const { email, password, error, loading, didNavigate } = values
-    // const { user } = isAuthenticated();
+    const { user } = isAuthenticated()
     const { switchToSignup } = useContext(AccountContext)
 
-    // const handleChange = (name) => (event) => {
-    //   setValues({ ...values, error: false, [name]: event.target.value });
-    // };
+    const handleChange = (name) => (event) => {
+        setValues({ ...values, error: false, [name]: event.target.value })
+    }
 
     const onSubmit = (event) => {
         event.preventDefault()
         setValues({ ...values, error: false, loading: true })
         signin({ email, password })
             .then((data) => {
-                if (data.error) {
-                    setValues({ ...values, error: data.error, loading: false })
-                } else {
-                    authenticate(data, () => {
-                        setValues({
-                            ...values,
-                            didNavigate: true,
-                        })
+                console.log(data)
+                // // if (data.error) {
+                // //     setValues({ ...values, error: data.error, loading: false })
+                // } else {
+                authenticate(data, () => {
+                    setValues({
+                        ...values,
+                        didNavigate: true,
                     })
-                }
+                })
             })
             .catch((e) => {
+                console.log(e)
                 console.log("signin request failed")
             })
     }
     const performNavigate = () => {
-      if (didNavigate) {
-
-          return <Navigate to="/home"/>;
+        if (didNavigate) {
+            return <Navigate to="/home" />
         }
         if (isAuthenticated()) {
-          console.log("authenticate hua");
-          return <Navigate to="/" />;
+            console.log("authenticate hua")
+            return <Navigate to="/" />
         }
-      }
+    }
 
     const loadingMessage = () => {
         return (
@@ -92,8 +92,18 @@ const Signin = () => {
         return (
             <BoxContainer>
                 <FormContainer>
-                    <Input type="email" placeholder="Email" />
-                    <Input type="password" placeholder="Password" />
+                    <Input
+                        onChange={handleChange("email")}
+                        value={email}
+                        type="email"
+                        placeholder="Email"
+                    />
+                    <Input
+                        onChange={handleChange("password")}
+                        value={password}
+                        type="password"
+                        placeholder="Password"
+                    />
                 </FormContainer>
                 <Marginer direction="vertical" margin={10} />
                 <MutedLink href="#">Forget your password?</MutedLink>

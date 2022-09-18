@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-
+import Signup from "./signup"
 import { motion } from "framer-motion"
 
-import { SignupForm } from "./signup"
 import { AccountContext } from "./AccountContext"
 import Signin from "./Signin"
 
@@ -77,7 +76,7 @@ const InnerContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0 1.8em;
-    padding-top:60px;
+    padding-top: 60px;
     padding-bottom: 5px;
 `
 
@@ -156,7 +155,7 @@ const AccountBox = (props) => {
                 </TopContainer>
                 <InnerContainer>
                     {active === "signin" && <Signin />}
-                    {active === "signup" && <SignupForm />}
+                    {active === "signup" && <Signup />}
                 </InnerContainer>
             </BoxContainer>
         </AccountContext.Provider>
