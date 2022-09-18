@@ -18,6 +18,7 @@ const BoxContainer = styled.div`
     box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
     position: relative;
     overflow: hidden;
+    margin-bottom: 40px;
 `
 
 const TopContainer = styled.div`
@@ -76,6 +77,7 @@ const InnerContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0 1.8em;
+    padding-top:60px;
     padding-bottom: 5px;
 `
 

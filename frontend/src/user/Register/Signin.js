@@ -52,16 +52,16 @@ const Signin = () => {
                 console.log("signin request failed")
             })
     }
-    // const performNavigate = () => {
-    //   if (didNavigate) {
+    const performNavigate = () => {
+      if (didNavigate) {
 
-    //       return <Navigate to="/home"/>;
-    //     }
-    //     if (isAuthenticated()) {
-    //       console.log("authenticate hua");
-    //       return <Navigate to="/" />;
-    //     }
-    //   }
+          return <Navigate to="/home"/>;
+        }
+        if (isAuthenticated()) {
+          console.log("authenticate hua");
+          return <Navigate to="/" />;
+        }
+      }
 
     const loadingMessage = () => {
         return (
@@ -117,7 +117,7 @@ const Signin = () => {
             {loadingMessage()}
             {errorMessage()}
             {LoginForm()}
-            {/* performanceNavigate */}
+            {performNavigate()}
         </Base>
     )
 }
