@@ -29,6 +29,10 @@ const hackathonSchema = mongoose.Schema({
             type: String,
         },
     },
+    totalParticipant: {
+        type: Number,
+        default: 0,
+    },
     maxTeamSize: {
         type: Number,
     },
